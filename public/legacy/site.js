@@ -9,11 +9,11 @@ fetch('/api/content').then(r => r.ok ? r.json() : null).then(data => {
   if (s.bbcQuote) document.querySelector('.quote-band blockquote').textContent=s.bbcQuote;
   if (s.bioEnglish) { const p=document.querySelector('#bio .prose'); const downloads=p.querySelector('.download-links'); p.innerHTML='<p>'+esc(s.bioEnglish).replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')+'</p>'; if(downloads)p.appendChild(downloads); }
   const projects=data.items.filter(x=>x.type==='project');
-  if(projects.length) document.querySelector('#concerts .event-list').innerHTML=projects.map(x=>`<article><time><b>${esc(x.date)}</b></time><div><h3>${esc(x.title)}</h3><p>${esc(x.subtitle)}</p></div>${x.url?`<a class="programme" href="${esc(x.url)}" target="_blank">Details</a>`:''}</article>`).join('');
+  if(projects.length && !document.querySelector('#upcoming-project-list.unified-calendar')) document.querySelector('#concerts .event-list').innerHTML=projects.map(x=>`<article><time><b>${esc(x.date)}</b></time><div><h3>${esc(x.title)}</h3><p>${esc(x.subtitle)}</p></div>${x.url?`<a class="programme" href="${esc(x.url)}" target="_blank">Details</a>`:''}</article>`).join('');
   const recordings=data.items.filter(x=>x.type==='recording');
   if(recordings.length) document.querySelector('.discography-list').innerHTML=recordings.map(x=>`<a class="recording-row" href="${esc(x.url||'#')}" target="_blank"><img src="${x.image_key?'/api/upload/'+encodeURIComponent(x.image_key):'taneyev-8574566.jpg'}" alt="${esc(x.title)}"><span class="recording-year">${esc(x.date)}</span><span class="recording-info"><b>${esc(x.title)}</b><small>${esc(x.subtitle)}</small></span><span class="recording-label">Listen</span></a>`).join('');
   const photos=data.items.filter(x=>x.type==='photo'&&x.image_key);
-  if(photos.length) document.querySelector('.press-photo-grid').innerHTML=photos.map(x=>`<a href="/api/upload/${encodeURIComponent(x.image_key)}" download><img src="/api/upload/${encodeURIComponent(x.image_key)}" alt="${esc(x.title)}"><span>${esc(x.title)} · Download</span></a>`).join('');
+  if(photos.length) document.querySelector('.press-photo-grid').innerHTML=photos.map(x=>{const src='/api/upload/'+encodeURIComponent(x.image_key);return `<figure><button class="photo-preview" type="button" data-full="${src}" aria-label="View ${esc(x.title)}"><img src="${src}" alt="${esc(x.title)}"></button><a class="photo-download" href="${src}" download><span>Download</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"/></svg></a></figure>`}).join('');
 }).catch(()=>{});
 document.querySelectorAll('a').forEach((link) => {
   const walker = document.createTreeWalker(link, NodeFilter.SHOW_TEXT);
@@ -23,3 +23,96 @@ document.querySelectorAll('a').forEach((link) => {
     node.textContent = node.textContent.replace(/[↗→↓]/g, '').replace(/\s{2,}/g, ' ').trim();
   });
 });
+
+document.querySelectorAll('.section-toggle').forEach((button) => {
+  if (button.hasAttribute('data-calendar-toggle')) return;
+  button.addEventListener('click', () => {
+    const section = document.getElementById(button.dataset.toggleSection);
+    if (!section) return;
+    const expanded = section.classList.toggle('is-expanded');
+    button.setAttribute('aria-expanded', String(expanded));
+    button.textContent = expanded ? button.dataset.less : button.dataset.more;
+  });
+});
+
+document.querySelectorAll('[data-calendar-toggle]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const section = document.getElementById('concerts');
+    if (!section) return;
+    const expanded = section.classList.toggle('calendar-expanded');
+    button.setAttribute('aria-expanded', String(expanded));
+    button.textContent = expanded ? button.dataset.less : button.dataset.more;
+  });
+});
+
+const photoLightbox = document.getElementById('photo-lightbox');
+if (photoLightbox) {
+  const lightboxImage = photoLightbox.querySelector('img');
+  const lightboxDownload = photoLightbox.querySelector('.photo-lightbox-download');
+  document.querySelector('.press-photo-grid')?.addEventListener('click', (event) => {
+    const preview = event.target.closest('.photo-preview');
+    if (!preview) return;
+    const thumbnail = preview.querySelector('img');
+    lightboxImage.src = preview.dataset.full;
+    lightboxImage.alt = thumbnail?.alt || 'Eldar Nebolsin press photograph';
+    lightboxDownload.href = preview.dataset.full;
+    photoLightbox.showModal();
+  });
+  photoLightbox.querySelector('.photo-lightbox-close')?.addEventListener('click', () => photoLightbox.close());
+  photoLightbox.addEventListener('click', (event) => {
+    if (event.target === photoLightbox) photoLightbox.close();
+  });
+}
+
+const layeredSections = document.querySelectorAll('main > section[data-layer]');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const quoteBands = document.querySelectorAll('.quote-band');
+if (quoteBands.length && !reducedMotion && 'IntersectionObserver' in window) {
+  document.documentElement.classList.add('has-quote-motion');
+  const quoteObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('quote-visible');
+      quoteObserver.unobserve(entry.target);
+    });
+  }, { threshold: .22 });
+  quoteBands.forEach((band) => quoteObserver.observe(band));
+}
+
+if (layeredSections.length && !reducedMotion) {
+  document.documentElement.classList.add('has-layer-motion');
+  const main = document.querySelector('main');
+  let layerFramePending = false;
+
+  const renderLayers = () => {
+    const viewportHeight = window.innerHeight;
+    const animationStart = viewportHeight * .98;
+    const animationEnd = viewportHeight * .34;
+    const travel = window.innerWidth < 600 ? 165 : 235;
+    const mainTop = main ? main.offsetTop : 0;
+
+    layeredSections.forEach((section, index) => {
+      const naturalTop = mainTop + section.offsetTop - window.scrollY;
+      const rawProgress = (animationStart - naturalTop) / (animationStart - animationEnd);
+      const progress = Math.max(0, Math.min(1, rawProgress));
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      section.style.setProperty('--layer-order', index);
+      section.style.setProperty('--layer-shift', `${(1 - eased) * travel}px`);
+      section.style.setProperty('--layer-progress', eased.toFixed(4));
+    });
+
+    layerFramePending = false;
+  };
+
+  const requestLayerFrame = () => {
+    if (layerFramePending) return;
+    layerFramePending = true;
+    window.requestAnimationFrame(renderLayers);
+  };
+
+  window.addEventListener('scroll', requestLayerFrame, { passive: true });
+  window.addEventListener('resize', requestLayerFrame);
+  requestLayerFrame();
+}
