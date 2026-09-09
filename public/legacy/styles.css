@@ -352,6 +352,27 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 #concerts .section-toggle{border-color:rgba(255,255,255,.2)}
 #concerts a{text-decoration-color:rgba(255,255,255,.42)}
 
+/* Past projects retain the calendar language: concerts dark, masterclasses light */
+#concerts .past-list article{--project-colour:#67616f}
+#concerts .past-list .past-burgundy{--project-colour:#774449}
+#concerts .past-list .past-petrol{--project-colour:#46666a}
+#concerts .past-list .past-plum{--project-colour:#65506b}
+#concerts .past-list .past-ochre{--project-colour:#75603b}
+#concerts .past-list .past-slate{--project-colour:#536373}
+#concerts .past-list .past-forest{--project-colour:#455f54}
+#concerts .past-list .past-film{--project-colour:#68636d}
+#concerts .past-list .past-masterclass{--masterclass-light:#bfd4d1;color:#111;background:linear-gradient(135deg,var(--masterclass-light),#e8ece8 82%);border-color:color-mix(in srgb,var(--masterclass-light) 76%,#50615e);box-shadow:inset 5px 0 0 color-mix(in srgb,var(--masterclass-light) 58%,#294b4d)}
+#concerts .past-list .mc-past-blue{--masterclass-light:#bccde3}
+#concerts .past-list .past-masterclass time b,#concerts .past-list .past-masterclass h3,#concerts .past-list .past-masterclass h3 a{color:#111}
+#concerts .past-list .past-masterclass p,#concerts .past-list .past-masterclass .programme{color:#3f4a48}
+#concerts .past-list .past-masterclass .event-kind{color:#415654!important}
+#concerts .past-list h3 a{text-decoration-line:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+#concerts .past-list time{min-width:0;align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+#concerts .past-list time b{max-width:100%;font-size:clamp(34px,3.6vw,50px);line-height:.82;letter-spacing:-.035em;white-space:nowrap}
+#concerts .past-list time span{display:block;margin:0;font-size:10px;line-height:1.25;letter-spacing:.12em;white-space:normal}
+#concerts .past-list article>div{min-width:0}
+#concerts .past-list h3{overflow-wrap:anywhere}
+
 /* One chronological calendar: dark performances, lighter masterclasses */
 #concerts>.unified-calendar{display:grid;gap:14px}
 #concerts:not(.calendar-expanded)>.unified-calendar article:nth-child(n+4){display:none}
@@ -386,16 +407,23 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 @media(max-width:900px){
   #concerts>.event-list article,#concerts .past-list article{min-height:138px;padding:23px 20px}
   #concerts>.unified-calendar article{grid-template-columns:92px minmax(0,1fr);gap:22px}
+  #concerts .past-list article{grid-template-columns:92px minmax(0,1fr);gap:22px}
   #concerts>.unified-calendar time{align-self:start;padding-top:8px}
+  #concerts .past-list time{align-self:start;padding-top:8px}
   #concerts>.unified-calendar time b{font-size:36px}
+  #concerts .past-list time b{font-size:34px}
   #concerts>.unified-calendar time span{font-size:9px}
+  #concerts .past-list time span{font-size:9px}
   .programme-details{grid-column:2;justify-self:start;text-align:left}
 }
 
 @media(max-width:420px){
   #concerts>.unified-calendar article{grid-template-columns:78px minmax(0,1fr);gap:16px;padding-left:16px;padding-right:16px}
+  #concerts .past-list article{grid-template-columns:78px minmax(0,1fr);gap:16px;padding-left:16px;padding-right:16px}
   #concerts>.unified-calendar time b{font-size:32px}
+  #concerts .past-list time b{font-size:30px}
   #concerts>.unified-calendar h3{font-size:27px}
+  #concerts .past-list h3{font-size:27px}
 }
 
 /* Compact media cards with a restrained YouTube palette */
@@ -534,3 +562,16 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 
 /* Echo the warm bronze of the Gramophone panel in the hero surname. */
 .hero h1 em{color:#b78362}
+
+/* Biography introduction and compact disclosure. */
+.bio-lead{margin-bottom:34px}
+.bio-more{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bio-more summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 2px;color:#3f3d38;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.14em;list-style:none;text-transform:uppercase;cursor:pointer}
+.bio-more summary::-webkit-details-marker{display:none}
+.bio-more summary::after{content:"+";font:300 24px/1 var(--sans)}
+.bio-more[open] summary::after{content:"−"}
+.bio-expanded{padding:20px 0 8px;animation:list-unfold .55s cubic-bezier(.2,.72,.2,1) both}
+.bio-expanded p:first-child{margin-top:0}
+@media(max-width:520px){.bio-lead{margin-bottom:28px}.bio-more summary{padding:16px 2px}}
+/* Language selector */
+.language-switcher{display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:10px;letter-spacing:.14em}.language-switcher a{opacity:.48;transition:opacity .2s ease}.language-switcher a:hover,.language-switcher a.is-active{opacity:1}.language-switcher a.is-active{text-decoration:underline;text-underline-offset:4px}@media(max-width:900px){.language-switcher{position:absolute;right:5vw;top:16px}}
