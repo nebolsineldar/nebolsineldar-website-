@@ -563,6 +563,41 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 /* Echo the warm bronze of the Gramophone panel in the hero surname. */
 .hero h1 em{color:#b78362}
 
+/* Horizontal student portrait ribbon */
+.language-switcher{display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:10px;letter-spacing:.14em}.language-switcher a{opacity:.48;transition:opacity .2s ease}.language-switcher a:hover,.language-switcher a.is-active{opacity:1}.language-switcher a.is-active{text-decoration:underline;text-underline-offset:4px}@media(max-width:900px){.language-switcher{position:absolute;right:5vw;top:16px}}
+#teaching>.split{display:block}
+#teaching>.split>div:first-child{max-width:760px;margin-bottom:48px}
+#teaching .student-list{display:flex;gap:16px;overflow-x:auto;overflow-y:visible;padding:8px 4px 26px;scroll-snap-type:x proximity;scrollbar-width:thin}
+#teaching .student-list article,#teaching:not(.is-expanded) .student-list article:nth-child(n+4){display:flex;flex:0 0 clamp(220px,22vw,290px);flex-direction:column;gap:0;margin:0;padding:0;border:1px solid color-mix(in srgb,var(--student-outline) 58%,transparent);background:#eeeae2;overflow:hidden;scroll-snap-align:start;transition:transform .3s ease,box-shadow .3s ease}
+#teaching .student-list article:hover{transform:translateY(-5px);box-shadow:0 18px 36px rgba(0,0,0,.14)}
+#teaching .student-list article>img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.18);transition:filter .3s ease,transform .4s ease}
+#teaching .student-list article:hover>img{filter:grayscale(0);transform:scale(1.025)}
+#teaching .student-list article>div{display:flex;flex:1;flex-direction:column;padding:20px 18px 22px}
+#teaching .student-list h3{font-size:26px;line-height:1.02}
+#teaching .student-list p{margin-top:12px}
+#teaching .teaching-toggle{display:none}
+@media(max-width:900px){#teaching .student-list{margin-right:-6vw;padding-right:6vw}#teaching .student-list article,#teaching:not(.is-expanded) .student-list article:nth-child(n+4){flex-basis:235px}#teaching>.split>div:first-child{margin-bottom:36px}}
+
+/* Horizontal 3D recording wheel. */
+#recordings{overflow:hidden}
+.recording-carousel-stage{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr) 46px;align-items:center;gap:8px}
+.recording-carousel-stage::after{content:"";position:absolute;z-index:0;left:12%;right:12%;bottom:25px;height:44px;border-radius:50%;background:radial-gradient(ellipse,rgba(39,30,24,.18),transparent 70%);filter:blur(10px);pointer-events:none}
+#recordings .discography-list{--recording-card-width:clamp(175px,22vw,255px);position:relative;z-index:1;display:flex;gap:clamp(12px,2.2vw,32px);overflow-x:auto;overflow-y:hidden;padding:42px calc((100% - var(--recording-card-width))/2) 58px;border:0;scroll-snap-type:x mandatory;scroll-padding-inline:calc((100% - var(--recording-card-width))/2);overscroll-behavior-x:contain;scrollbar-width:none;perspective:1200px}
+#recordings .discography-list::-webkit-scrollbar{display:none}
+#recordings .recording-row,#recordings:not(.is-expanded) .recording-row:nth-child(n+4),#recordings.is-expanded .recording-row:nth-child(n+4){position:relative;display:flex;flex:0 0 var(--recording-card-width);flex-direction:column;gap:11px;align-items:center;padding:0 0 20px;border:0;opacity:var(--cover-opacity,.55);transform:translate3d(0,0,var(--cover-z,-22px)) rotateY(var(--cover-rotate,0deg)) scale3d(var(--cover-scale,.82),var(--cover-scale,.82),1);transform-style:preserve-3d;transform-origin:center center;backface-visibility:hidden;scroll-snap-align:center;will-change:transform,opacity;contain:layout paint style}
+#recordings .recording-row.is-centre{z-index:3}
+#recordings .recording-row img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;background:#dedbd5;box-shadow:0 25px 52px rgba(22,16,13,.34);backface-visibility:hidden;transform:translate3d(0,0,0)}
+#recordings .recording-year{font-family:var(--sans);font-size:12px;letter-spacing:.16em;color:#6f625a}
+#recordings .recording-info{align-items:center;text-align:center;max-width:100%;gap:8px}
+#recordings .recording-info b{font-size:clamp(20px,2.2vw,28px);line-height:1.05;text-decoration:none}
+#recordings .recording-info small{font-size:12px;line-height:1.35;max-width:31ch}
+#recordings .recording-label{font-size:10px;text-align:center;border-bottom:1px solid currentColor;padding-bottom:3px}
+.recording-carousel-control{position:relative;z-index:4;width:42px;height:42px;border:1px solid rgba(22,17,14,.26);border-radius:50%;background:rgba(243,243,240,.82);color:#342821;font-family:var(--serif);font-size:30px;line-height:1;cursor:pointer;transition:background .2s ease,color .2s ease,transform .2s ease}
+.recording-carousel-control:hover{background:#342821;color:#f3f3f0;transform:scale(1.06)}
+.recording-carousel-control:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:700px){.recording-carousel-stage{grid-template-columns:30px minmax(0,1fr) 30px;gap:0;margin-inline:-4vw}.recording-carousel-stage::after{left:7%;right:7%}#recordings .discography-list{--recording-card-width:min(56vw,225px);gap:14px;padding-top:30px;padding-bottom:48px}.recording-carousel-control{width:30px;height:30px;font-size:23px;background:rgba(243,243,240,.9)}#recordings .recording-info b{font-size:20px}#recordings .recording-info small{font-size:12px}}
+@media(prefers-reduced-motion:reduce){#recordings .recording-row{transition:none;transform:none!important;opacity:1!important}.recording-carousel-control{transition:none}}
+
 /* Biography introduction and compact disclosure. */
 .bio-lead{margin-bottom:34px}
 .bio-more{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -573,5 +608,3 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 .bio-expanded{padding:20px 0 8px;animation:list-unfold .55s cubic-bezier(.2,.72,.2,1) both}
 .bio-expanded p:first-child{margin-top:0}
 @media(max-width:520px){.bio-lead{margin-bottom:28px}.bio-more summary{padding:16px 2px}}
-/* Language selector */
-.language-switcher{display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:10px;letter-spacing:.14em}.language-switcher a{opacity:.48;transition:opacity .2s ease}.language-switcher a:hover,.language-switcher a.is-active{opacity:1}.language-switcher a.is-active{text-decoration:underline;text-underline-offset:4px}@media(max-width:900px){.language-switcher{position:absolute;right:5vw;top:16px}}
