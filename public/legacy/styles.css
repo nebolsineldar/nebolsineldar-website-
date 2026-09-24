@@ -466,6 +466,9 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 .press-photo-grid .photo-download svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .press-photo-grid .photo-download:hover{background:#8b3d2b}
 .press-photo-grid span{font-size:10px}
+.press-photo-grid figcaption{padding:0 2px;color:#67615b;font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.mc-online h3 a{border-bottom:1px solid currentColor;text-decoration:none;transition:opacity .2s ease}
+.mc-online h3 a:hover{opacity:.68}
 
 .photo-lightbox{width:min(94vw,1400px);height:min(92dvh,980px);padding:58px 24px 22px;border:1px solid rgba(255,255,255,.24);background:#090909;color:#f4f1e9;box-shadow:0 34px 100px rgba(0,0,0,.65)}
 .photo-lightbox[open]{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:18px}
@@ -573,6 +576,8 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 #teaching .student-list article>img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.18);transition:filter .3s ease,transform .4s ease}
 #teaching .student-list article:hover>img{filter:grayscale(0);transform:scale(1.025)}
 #teaching .student-list article>div{display:flex;flex:1;flex-direction:column;padding:20px 18px 22px}
+#teaching .student-list article.student-text-only{min-height:clamp(280px,31vw,365px)}
+#teaching .student-list article.student-text-only>div{justify-content:center}
 #teaching .student-list h3{font-size:26px;line-height:1.02}
 #teaching .student-list p{margin-top:12px}
 #teaching .teaching-toggle{display:none}
