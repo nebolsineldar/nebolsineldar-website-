@@ -2,6 +2,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 const esc = value => String(value || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const isSpanish = document.documentElement.lang === 'es';
+const isGerman = document.documentElement.lang === 'de';
 
 const updateRecordingCarousel = (list) => {
   const cards = [...list.querySelectorAll('.recording-row')];
@@ -74,14 +75,43 @@ fetch('/api/content').then(r => r.ok ? r.json() : null).then(data => {
   if (s.contactEmail) { const a=document.querySelector('#contact .email'); a.textContent=s.contactEmail; a.href='mailto:'+s.contactEmail; }
   if (s.gramophoneQuote) document.querySelector('.hero .intro').textContent=s.gramophoneQuote;
   if (s.bbcQuote) document.querySelector('.quote-band blockquote').textContent=s.bbcQuote;
-  if (!isSpanish && s.bioEnglish) { const p=document.querySelector('#bio .prose'); const downloads=p.querySelector('.download-links'); p.innerHTML='<p>'+esc(s.bioEnglish).replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')+'</p>'; if(downloads)p.appendChild(downloads); }
+  if (!isSpanish && !isGerman && s.bioEnglish) { const p=document.querySelector('#bio .prose'); const downloads=p.querySelector('.download-links'); p.innerHTML='<p>'+esc(s.bioEnglish).replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')+'</p>'; if(downloads)p.appendChild(downloads); }
   const projects=data.items.filter(x=>x.type==='project');
   if(projects.length && !document.querySelector('#upcoming-project-list.unified-calendar')) document.querySelector('#concerts .event-list').innerHTML=projects.map(x=>`<article><time><b>${esc(x.date)}</b></time><div><h3>${esc(x.title)}</h3><p>${esc(x.subtitle)}</p></div>${x.url?`<a class="programme" href="${esc(x.url)}" target="_blank">Details</a>`:''}</article>`).join('');
   const recordings=data.items.filter(x=>x.type==='recording');
-  if(recordings.length) { document.querySelector('.discography-list').innerHTML=recordings.map(x=>`<a class="recording-row" href="${esc(x.url||'#')}" target="_blank"><img src="${x.image_key?'/api/upload/'+encodeURIComponent(x.image_key):'taneyev-8574566.jpg'}" alt="${esc(x.title)}"><span class="recording-year">${esc(x.date)}</span><span class="recording-info"><b>${esc(x.title)}</b><small>${esc(x.subtitle)}</small></span><span class="recording-label">${isSpanish?'Escuchar':'Listen'}</span></a>`).join(''); initRecordingCarousel(); }
+  if(recordings.length) { document.querySelector('.discography-list').innerHTML=recordings.map(x=>`<a class="recording-row" href="${esc(x.url||'#')}" target="_blank"><img src="${x.image_key?'/api/upload/'+encodeURIComponent(x.image_key):'taneyev-8574566.jpg'}" alt="${esc(x.title)}"><span class="recording-year">${esc(x.date)}</span><span class="recording-info"><b>${esc(x.title)}</b><small>${esc(x.subtitle)}</small></span><span class="recording-label">${isSpanish?'Escuchar':isGerman?'Anhören':'Listen'}</span></a>`).join(''); initRecordingCarousel(); }
   const photos=data.items.filter(x=>x.type==='photo'&&x.image_key);
-  if(photos.length) document.querySelector('.press-photo-grid').innerHTML=photos.map((x,index)=>{const src='/api/upload/'+encodeURIComponent(x.image_key);const photographer=index<3?'Noah Shaye':'Adil Razali';return `<figure><button class="photo-preview" type="button" data-full="${src}" aria-label="${isSpanish?'Ver':'View'} ${esc(x.title)}"><img src="${src}" alt="${esc(x.title)}"></button><a class="photo-download" href="${src}" download><span>${isSpanish?'Descargar':'Download'}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"/></svg></a><figcaption>${isSpanish?'Foto':'Photo'}: ${photographer}</figcaption></figure>`}).join('');
+  if(photos.length) document.querySelector('.press-photo-grid').innerHTML=photos.map((x,index)=>{const src='/api/upload/'+encodeURIComponent(x.image_key);const photographer=index<3?'Noah Shaye':'Adil Razali';return `<figure><button class="photo-preview" type="button" data-full="${src}" aria-label="${isSpanish?'Ver':isGerman?'Ansehen':'View'} ${esc(x.title)}"><img src="${src}" alt="${esc(x.title)}"></button><a class="photo-download" href="${src}" download><span>${isSpanish?'Descargar':isGerman?'Herunterladen':'Download'}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"/></svg></a><figcaption>${isSpanish?'Foto':isGerman?'Foto':'Photo'}: ${photographer}</figcaption></figure>`}).join('');
 }).catch(()=>{});
+
+if (isGerman) {
+  document.querySelectorAll('.youtube-video > b').forEach((label) => { label.textContent = 'Ansehen'; });
+  const mediaDates = ['','22. OKTOBER 2025','16.–17. JANUAR 2025','11.–12. APRIL 2024','2024','2019','9. NOVEMBER 2012'];
+  document.querySelectorAll('.youtube-video .media-date').forEach((date, index) => { date.textContent = mediaDates[index + 1] || date.textContent; });
+  const mediaCopy = [
+    ['Schostakowitsch · Klavierquintett op. 57','Janine Jansen · Boris Brovtsyn · Clara-Jumi Kang · Torleif Thedéen · Eldar Nebolsin'],
+    ['Schumann · Carnaval, Fantasie und Lieder','Fundación Juan March · Klavierabend mit Eldar Nebolsin'],
+    ['Liszt · Klavierkonzert Nr. 2','ROSS · Sevilla · György Gyoriványi Ráth'],
+    ['Rachmaninow · Rhapsodie über ein Thema von Paganini','Bukarest · Christian Badea'],
+    ['Schumann · Fantasiestücke','Verão Clássico · Eldar Nebolsin'],
+    ['Brahms · Cellosonaten · Making-of','Asier Polo & Eldar Nebolsin'],
+    ['Tschaikowsky · Klavierkonzert Nr. 2','Orquesta Sinfónica de Galicia · Rubén Gimeno'],
+    ['Eldar Nebolsin · Offizieller Kanal','Konzerte, Kammermusik und Meisterkurse']
+  ];
+  document.querySelectorAll('.youtube-video').forEach((card, index) => {
+    const copy = mediaCopy[index];
+    if (!copy) return;
+    card.querySelector('h3').textContent = copy[0];
+    card.querySelector('p').textContent = copy[1];
+  });
+  const channelLabel = document.querySelectorAll('.youtube-video > b')[7];
+  if (channelLabel) channelLabel.textContent = 'Kanal besuchen';
+  const spotify = document.querySelector('.spotify-audio');
+  if (spotify) {
+    spotify.querySelector('p').textContent = 'Eine kuratierte Auswahl von Aufnahmen';
+    spotify.querySelector('b').textContent = 'Anhören';
+  }
+}
 document.querySelectorAll('a').forEach((link) => {
   const walker = document.createTreeWalker(link, NodeFilter.SHOW_TEXT);
   const textNodes = [];

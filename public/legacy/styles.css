@@ -603,6 +603,100 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 @media(max-width:700px){.recording-carousel-stage{grid-template-columns:30px minmax(0,1fr) 30px;gap:0;margin-inline:-4vw}.recording-carousel-stage::after{left:7%;right:7%}#recordings .discography-list{--recording-card-width:min(56vw,225px);gap:14px;padding-top:30px;padding-bottom:48px}.recording-carousel-control{width:30px;height:30px;font-size:23px;background:rgba(243,243,240,.9)}#recordings .recording-info b{font-size:20px}#recordings .recording-info small{font-size:12px}}
 @media(prefers-reduced-motion:reduce){#recordings .recording-row{transition:none;transform:none!important;opacity:1!important}.recording-carousel-control{transition:none}}
 
+/* Three grand-piano pedals form the language selector on the hero. */
+.language-switcher{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.pedal-language-control{
+  position:absolute;
+  z-index:5;
+  top:calc(42% - 8px);
+  right:clamp(-48px,-3vw,-28px);
+  width:clamp(170px,18vw,264px);
+  aspect-ratio:16/9;
+  transform:translateY(-50%) rotate(90deg);
+  transform-origin:center;
+  filter:drop-shadow(0 18px 22px rgba(0,0,0,.34));
+}
+.pedal-language-control>img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  pointer-events:none;
+  transition:filter .35s ease,opacity .35s ease;
+}
+.pedal-link{
+  position:absolute;
+  top:35%;
+  width:31%;
+  height:62%;
+  color:#f4ece4;
+  font-family:var(--sans);
+  text-transform:uppercase;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),color .25s ease;
+}
+.pedal-en{left:3%}
+.pedal-es{left:34.5%}
+.pedal-de{left:66%}
+.pedal-link span{
+  position:absolute;
+  left:50%;
+  top:104%;
+  padding:4px 7px;
+  border-radius:2px;
+  background:rgba(7,7,7,.68);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.13em;
+  opacity:0;
+  transform:translate(-50%,-10px) rotate(-90deg);
+  transition:opacity .2s ease,transform .3s ease;
+}
+.pedal-link b{
+  position:absolute;
+  left:50%;
+  top:72%;
+  padding:4px 5px 3px;
+  border:1px solid rgba(255,242,214,.48);
+  border-radius:3px;
+  background:rgba(5,5,5,.8);
+  color:#fff4dd;
+  font-size:13px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:.12em;
+  text-shadow:0 2px 8px #000;
+  transform:translate(-50%,-50%) rotate(-90deg);
+  transition:transform .3s ease,color .2s ease;
+}
+.pedal-link:hover,.pedal-link:focus-visible,.pedal-link.is-active{color:#fff2d6}
+.pedal-link:hover,.pedal-link:focus-visible{transform:translateY(4px)}
+.pedal-link:hover span,.pedal-link:focus-visible span{opacity:1;transform:translate(-50%,0) rotate(-90deg)}
+.pedal-link:hover b,.pedal-link:focus-visible b{transform:translate(-50%,-42%) rotate(-90deg)}
+.pedal-link.is-active b{border-bottom:1px solid currentColor;padding-bottom:3px}
+.pedal-link:active{transform:translateY(8px) scaleY(.97);transform-origin:top center}
+.pedal-link:focus-visible{outline:1px solid rgba(255,242,214,.72);outline-offset:3px}
+@media(max-width:700px){
+  .pedal-language-control{top:calc(14% - 8px);right:-72px;width:165px;opacity:.97}
+  .pedal-link span{display:none}
+  .pedal-link b{font-size:11px}
+}
+@media(max-width:420px){
+  .pedal-language-control{top:calc(14% - 8px);right:-70px;width:160px}
+}
+@media(prefers-reduced-motion:reduce){
+  .pedal-link,.pedal-link span,.pedal-link b,.pedal-language-control>img{transition:none}
+}
+
 /* Biography introduction and compact disclosure. */
 .bio-lead{margin-bottom:34px}
 .bio-more{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
