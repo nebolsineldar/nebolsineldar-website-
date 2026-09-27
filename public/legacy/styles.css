@@ -383,7 +383,8 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 #concerts>.unified-calendar .calendar-project{color:#f3f3f0;background:linear-gradient(135deg,color-mix(in srgb,var(--project-colour) 38%,#111),#111 76%)}
 #concerts>.unified-calendar .calendar-project:nth-child(2){--project-colour:#3f5660}
 #concerts>.unified-calendar .calendar-project:nth-child(3){--project-colour:#66582f}
-#concerts>.unified-calendar .calendar-project:nth-child(5){--project-colour:#543e5d}
+#concerts>.unified-calendar .calendar-project:nth-child(4){--project-colour:#543e5d}
+#concerts>.unified-calendar .calendar-project:nth-child(7){--project-colour:#455f54}
 #concerts>.unified-calendar .calendar-masterclass{--masterclass-light:#b9d1d0;color:#111;background:linear-gradient(135deg,var(--masterclass-light),#e8ece8 82%);border-color:color-mix(in srgb,var(--masterclass-light) 76%,#50615e);box-shadow:inset 5px 0 0 color-mix(in srgb,var(--masterclass-light) 58%,#294b4d)}
 #concerts>.unified-calendar .mc-blue{--masterclass-light:#b9cae0}
 #concerts>.unified-calendar .mc-indigo{--masterclass-light:#c8c3dc}
@@ -397,6 +398,13 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 #concerts>.unified-calendar time span{display:block;margin:0;font-size:10px;line-height:1.25;letter-spacing:.12em;white-space:normal}
 #concerts>.unified-calendar article>div{min-width:0}
 #concerts>.unified-calendar h3{overflow-wrap:anywhere}
+#concerts>.unified-calendar .event-city{margin-bottom:10px;font-size:clamp(38px,4.4vw,62px);line-height:.9;overflow-wrap:normal}
+#concerts>.unified-calendar .event-description{max-width:610px;margin:0;font-size:13px;line-height:1.55}
+#concerts>.unified-calendar .event-description small{display:inline-block;margin-top:5px;color:inherit;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+#concerts>.unified-calendar .event-more{display:inline-flex;align-items:center;justify-self:end;gap:9px;padding:9px 0;border:0;color:#ead2b5;font-weight:600;text-align:left;text-decoration:none!important;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap}
+#concerts>.unified-calendar .event-more b{font:400 18px/1 var(--sans);transition:transform .2s ease}
+#concerts>.unified-calendar .event-more:hover b{transform:rotate(90deg)}
+#concerts>.unified-calendar .calendar-masterclass .event-more{color:#263b39}
 .event-kind{margin:0 0 9px!important;color:rgba(255,255,255,.58)!important;font-size:9px!important;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
 .calendar-masterclass .event-kind{color:#415654!important}
 .programme-details{justify-self:end;text-align:right;font-size:12px;color:#c4beb5}
@@ -414,6 +422,7 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
   #concerts .past-list time b{font-size:34px}
   #concerts>.unified-calendar time span{font-size:9px}
   #concerts .past-list time span{font-size:9px}
+  #concerts>.unified-calendar .event-more{grid-column:2;justify-self:start;margin-top:2px}
   .programme-details{grid-column:2;justify-self:start;text-align:left}
 }
 
@@ -423,6 +432,8 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
   #concerts>.unified-calendar time b{font-size:32px}
   #concerts .past-list time b{font-size:30px}
   #concerts>.unified-calendar h3{font-size:27px}
+  #concerts>.unified-calendar .event-city{font-size:34px}
+  #concerts>.unified-calendar .event-description{font-size:12px}
   #concerts .past-list h3{font-size:27px}
 }
 
