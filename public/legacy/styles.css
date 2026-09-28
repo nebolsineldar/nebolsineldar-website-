@@ -554,6 +554,58 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 }
 @media(max-width:520px){.hero .eyebrow{bottom:3.2vh;max-width:96vw;font-size:10px;letter-spacing:.1em}}
 
+/* Compact featured performance, placed just above the hero signature. */
+.hero-featured-video{
+  position:absolute;
+  left:50%;
+  bottom:7.2vh;
+  z-index:6;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:max-content;
+  max-width:min(82vw,700px);
+  padding:11px 14px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:6px;
+  background:rgba(5,5,5,.46);
+  color:rgba(255,255,255,.94);
+  font-family:var(--sans);
+  font-size:11px;
+  line-height:1.25;
+  letter-spacing:.035em;
+  text-decoration:none!important;
+  transform:translateX(-50%);
+  backdrop-filter:blur(8px);
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+  transition:background-color .22s ease,border-color .22s ease,transform .22s ease;
+}
+.hero-featured-video>span:last-child{display:flex;min-width:0;flex-direction:column;gap:3px;white-space:nowrap}
+.hero-featured-video strong{font-weight:500}
+.hero-featured-video small{color:rgba(255,255,255,.66);font-size:9px}
+.hero-featured-video small b{color:#fff;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.hero-featured-video-icon{display:grid;flex:0 0 32px;width:32px;height:23px;place-items:center;border-radius:6px;background:#f03;color:#fff;font-size:10px;padding-left:2px;box-shadow:0 3px 12px rgba(255,0,51,.24)}
+.hero-featured-video:hover,.hero-featured-video:focus-visible{background:rgba(5,5,5,.7);border-color:rgba(255,255,255,.48);transform:translateX(-50%) translateY(-2px)}
+.hero-featured-video:focus-visible{outline:2px solid #f5efe9;outline-offset:3px}
+@media(max-width:700px){
+  .hero-featured-video{bottom:7.8vh;max-width:90vw;padding:9px 11px;font-size:9px}
+  .hero-featured-video>span:last-child{display:flex;overflow:hidden;text-align:left;text-overflow:ellipsis}
+  .hero-featured-video strong{display:block;overflow:hidden;text-overflow:ellipsis}
+  .hero-featured-video small{display:block;overflow:hidden;text-overflow:ellipsis;font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.hero-featured-video{transition:none}}
+
+/* Compact media heading so the listening ribbon begins without a large pause. */
+#media{padding-top:76px}
+#media .section-heading{margin-bottom:30px}
+#media .section-heading h2{margin:0;font-size:clamp(46px,6vw,82px)}
+.press-downloads .press-photos-heading{margin:0 0 28px;padding-top:0;border-top:0}
+@media(max-width:520px){
+  #media{padding-top:66px}
+  #media .section-heading{margin-bottom:22px}
+  #media .section-heading h2{font-size:46px}
+}
+
 /* Lighter press panels and individually framed student entries. */
 .gramophone-band{background:#2b2928}
 .pressler-band{background:#373432}

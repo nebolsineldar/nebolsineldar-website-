@@ -4,6 +4,11 @@ const esc = value => String(value || '').replace(/[&<>"']/g, c => ({'&':'&amp;',
 const isSpanish = document.documentElement.lang === 'es';
 const isGerman = document.documentElement.lang === 'de';
 
+// Place the listening and viewing ribbon immediately after the opening press quote.
+const mediaSection = document.getElementById('media');
+const gramophoneBand = document.querySelector('.gramophone-band');
+if (mediaSection && gramophoneBand) gramophoneBand.insertAdjacentElement('afterend', mediaSection);
+
 const updateRecordingCarousel = (list) => {
   const cards = [...list.querySelectorAll('.recording-row')];
   const centre = list.scrollLeft + list.clientWidth / 2;
@@ -86,14 +91,15 @@ fetch('/api/content').then(r => r.ok ? r.json() : null).then(data => {
 
 if (isGerman) {
   document.querySelectorAll('.youtube-video > b').forEach((label) => { label.textContent = 'Ansehen'; });
-  const mediaDates = ['','22. OKTOBER 2025','16.–17. JANUAR 2025','11.–12. APRIL 2024','2024','2019','9. NOVEMBER 2012'];
-  document.querySelectorAll('.youtube-video .media-date').forEach((date, index) => { date.textContent = mediaDates[index + 1] || date.textContent; });
+  const mediaDates = ['16.–17. JANUAR 2025','22. OKTOBER 2025','NOVEMBER 2020','23. JULI 2024','11.–12. APRIL 2024','22. JANUAR 2024','2019','9. NOVEMBER 2012'];
+  document.querySelectorAll('.youtube-video .media-date').forEach((date, index) => { date.textContent = mediaDates[index] || date.textContent; });
   const mediaCopy = [
-    ['Schostakowitsch · Klavierquintett op. 57','Janine Jansen · Boris Brovtsyn · Clara-Jumi Kang · Torleif Thedéen · Eldar Nebolsin'],
-    ['Schumann · Carnaval, Fantasie und Lieder','Fundación Juan March · Klavierabend mit Eldar Nebolsin'],
     ['Liszt · Klavierkonzert Nr. 2','ROSS · Sevilla · György Gyoriványi Ráth'],
-    ['Rachmaninow · Rhapsodie über ein Thema von Paganini','Bukarest · Christian Badea'],
+    ['Schumann · Carnaval, Fantasie und Lieder','Fundación Juan March · Klavierabend mit Eldar Nebolsin'],
+    ['Schostakowitsch · Klaviersonate Nr. 2 op. 61','MetaHaus Berlin · Live-Aufnahme'],
     ['Schumann · Fantasiestücke','Verão Clássico · Eldar Nebolsin'],
+    ['Rachmaninow · Rhapsodie über ein Thema von Paganini','Bukarest · Christian Badea'],
+    ['Schostakowitsch · Klavierquintett op. 57','Janine Jansen · Boris Brovtsyn · Clara-Jumi Kang · Torleif Thedéen · Eldar Nebolsin'],
     ['Brahms · Cellosonaten · Making-of','Asier Polo & Eldar Nebolsin'],
     ['Tschaikowsky · Klavierkonzert Nr. 2','Orquesta Sinfónica de Galicia · Rubén Gimeno'],
     ['Eldar Nebolsin · Offizieller Kanal','Konzerte, Kammermusik und Meisterkurse']
@@ -104,7 +110,7 @@ if (isGerman) {
     card.querySelector('h3').textContent = copy[0];
     card.querySelector('p').textContent = copy[1];
   });
-  const channelLabel = document.querySelectorAll('.youtube-video > b')[7];
+  const channelLabel = document.querySelectorAll('.youtube-video > b')[8];
   if (channelLabel) channelLabel.textContent = 'Kanal besuchen';
   const spotify = document.querySelector('.spotify-audio');
   if (spotify) {
