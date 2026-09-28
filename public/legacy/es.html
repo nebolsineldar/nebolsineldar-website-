@@ -15,7 +15,7 @@
     <a class="brand" href="#home">Eldar Nebolsin</a>
     <nav aria-label="Navegación principal">
       <a href="#bio">Biografía</a><a href="#concerts">Proyectos y clases magistrales</a><a href="#recordings">Grabaciones</a>
-      <a href="#teaching">Docencia</a><a href="#media">Multimedia</a><a href="#contact">Contacto</a>
+      <a href="#repertoire">Repertorio</a><a href="#teaching">Docencia</a><a href="#media">Multimedia</a><a href="#contact">Contacto</a>
     </nav>
     <div class="language-switcher" aria-label="Idioma"><a lang="en" href="index.html">EN</a><span>·</span><a class="is-active" lang="es" aria-current="page" href="es.html">ES</a><span>·</span><a lang="de" href="de.html">DE</a></div>
   </header>
@@ -46,7 +46,7 @@
       <div class="prose">
         <p class="bio-lead">Considerado uno de los músicos más fascinantes y versátiles de su generación, Eldar Nebolsin es asimismo uno de los pedagogos del piano más solicitados del panorama internacional. Sus alumnos han obtenido primeros premios y destacados galardones en algunos de los concursos internacionales más importantes del mundo, entre ellos el Concurso Internacional de Piano Arthur Rubinstein, el Concurso Internacional de Piano Frédéric Chopin de Varsovia y el Concurso Internacional Long–Thibaud, entre muchos otros. En los últimos años, su apasionada dedicación a la música de cámara —como miembro de Spectrum Concerts Berlin y en colaboración con artistas como Janine Jansen, Boris Brovtsyn y Jens-Peter Maintz— ha dado lugar a una serie de grabaciones ampliamente elogiadas por la prensa internacional.</p>
         <details class="bio-more">
-          <summary>Leer más</summary>
+          <summary data-open-label="Mostrar la biografía completa" data-close-label="Cerrar la biografía completa" aria-label="Mostrar la biografía completa"></summary>
           <div class="bio-expanded">
             <p>Nacido en Taskent en el seno de una familia de músicos, Eldar Nebolsin inició su carrera internacional a los diecisiete años, al convertirse en el ganador más joven de la historia del Gran Premio del Concurso Internacional de Piano de Santander. En 2005 obtuvo asimismo el Primer Premio del Concurso Internacional de Piano Sviatoslav Richter de Moscú.</p>
             <p>Nebolsin estudió con el legendario pedagogo ruso Dmitri Bashkirov y recibió valiosos impulsos artísticos de Ralf Gothóni, Márta Gulyás, Ferenc Rados y Andreas Staier. Sus primeros maestros fueron sus padres y Natalia Wasinkina.</p>
@@ -62,10 +62,11 @@
 
     <section id="concerts" class="section dark" data-layer="04" data-title="Proyectos y clases magistrales">
       <div class="section-heading projects-heading"><div><p class="eyebrow">Temporada 2026–27</p><h2>Proyectos y<br>clases magistrales</h2></div><p class="note">Conciertos, proyectos artísticos y actividades docentes</p></div>
-      <div class="subsection-heading"><p class="eyebrow">Calendario cronológico</p><h3>Próximamente</h3></div>
+      <div class="subsection-heading projects-subheading"><h3>Próximamente</h3></div>
+      <div class="project-ribbon-stage">
       <div class="event-list unified-calendar" id="upcoming-project-list">
         <article class="calendar-project"><time><b>10</b><span>SEP 2026</span></time><div><p class="event-kind">CONCIERTO</p><h3 class="event-city">Burgos</h3><p class="event-description">Recital en el Festival Antonio de Cabezón, con Asier Polo</p></div><a class="programme event-more" href="https://cultura.aytoburgos.es/es/web/ayuntamiento-de-burgos/agenda/-/calendarsuite/event/festival-antonio-de-cabezon/126496738/pQeinQ3dyG6u" target="_blank" rel="noreferrer">Más información <b aria-hidden="true">+</b></a></article>
-        <article class="calendar-project"><time><b>3–5</b><span>NOV 2026</span></time><div><p class="event-kind">CONCIERTOS</p><h3 class="event-city">Bucarest</h3><p class="event-description">Festival SoNoRo · conciertos de música de cámara</p></div><a class="programme event-more" href="https://festival.sonoro.org/concerte/" target="_blank" rel="noreferrer">Más información <b aria-hidden="true">+</b></a></article>
+        <article class="calendar-project"><time><b>3–5</b><span>NOV 2026</span></time><div><p class="event-kind">CONCIERTOS</p><h3 class="event-city">Bucarest</h3><p class="event-description">Festival SoNoRo · música de cámara y recitales solistas</p></div><a class="programme event-more" href="https://festival.sonoro.org/concerte/" target="_blank" rel="noreferrer">Más información <b aria-hidden="true">+</b></a></article>
         <article class="calendar-project"><time><b>4</b><span>DIC 2026</span></time><div><p class="event-kind">RECITAL</p><h3 class="event-city">Potsdam</h3><p class="event-description">Recital · obras de Chopin y Prokófiev</p></div></article>
         <article class="calendar-project"><time><b>11</b><span>DIC 2026</span></time><div><p class="event-kind">RECITAL</p><h3 class="event-city">Bilbao</h3><p class="event-description">Recital · Sociedad Filarmónica de Bilbao</p></div><a class="programme event-more" href="https://www.filarmonica.org/index_es.php" target="_blank" rel="noreferrer">Más información <b aria-hidden="true">+</b></a></article>
         <article class="calendar-masterclass mc-teal"><time><b>8–10</b><span>MAR 2027</span></time><div><p class="event-kind">CLASE MAGISTRAL</p><h3 class="event-city">Basilea</h3><p class="event-description">Clase magistral · HSM Basel</p></div><a class="programme event-more" href="https://www.fhnw.ch/en/about-fhnw/schools/music" target="_blank" rel="noreferrer">Más información <b aria-hidden="true">+</b></a></article>
@@ -75,11 +76,13 @@
         <article class="calendar-masterclass mc-slate"><time><b>26–1</b><span>JUL–AGO 2027</span></time><div><p class="event-kind">CLASE MAGISTRAL</p><h3 class="event-city">Potsdam</h3><p class="event-description">Clase magistral · Edwin Fischer Sommerakademie</p></div><a class="programme event-more" href="https://www.edwinfischersommerakademie.com/edwin-fischer.php" target="_blank" rel="noreferrer">Más información <b aria-hidden="true">+</b></a></article>
         <article class="calendar-masterclass mc-online"><time><b>Online</b></time><div><p class="event-kind">CONSULTA</p><h3 class="event-city">Online</h3><p class="event-description">Consulta de piano con Eldar Nebolsin</p></div><a class="programme event-more" href="mailto:nebolsineldar@hotmail.com?subject=Online%20piano%20consultation%20with%20Eldar%20Nebolsin">Contacto <b aria-hidden="true">+</b></a></article>
       </div>
-      <button class="section-toggle calendar-toggle" type="button" data-calendar-toggle data-more="Más proyectos y clases magistrales" data-less="Mostrar menos proyectos y clases magistrales" aria-expanded="false" aria-controls="upcoming-project-list">Más proyectos y clases magistrales</button>
+      <button class="project-ribbon-next upcoming-ribbon-next" type="button" aria-label="Mostrar más proyectos próximos" data-ribbon-next="upcoming-project-list">›</button>
+      </div>
       <button class="section-toggle" type="button" data-toggle-section="concerts" data-more="Ver proyectos anteriores" data-less="Ocultar proyectos anteriores" aria-expanded="false" aria-controls="past-projects">Ver proyectos anteriores</button>
       <div class="past-concerts" id="past-projects">
         <div class="section-heading compact"><div><p class="eyebrow">Archivo</p><h2>Proyectos anteriores</h2></div><p class="note">Selección de proyectos artísticos y colaboraciones</p></div>
-        <div class="event-list past-list">
+        <div class="project-ribbon-stage">
+        <div class="event-list past-list" id="past-projects-list">
           <article class="calendar-project past-burgundy"><time><b>29–30</b><span>AGO 2026</span></time><div><p class="event-kind">FESTIVAL · CONCIERTOS</p><h3><a href="https://kammermusik-festival-landshut.de/" target="_blank" rel="noreferrer">Kammermusikfestival Landshut</a></h3><p>Freunde der Musik · Landshut, Alemania</p></div><a class="programme" href="https://kammermusik-festival-landshut.de/" target="_blank" rel="noreferrer">Programa del festival</a></article>
           <article class="calendar-project past-petrol"><time><b>28–31</b><span>JUL 2026</span></time><div><p class="event-kind">FESTIVAL · CONCIERTOS</p><h3><a href="https://veraoclassico.com/" target="_blank" rel="noreferrer">Verão Clássico</a></h3><p>Conciertos del festival · Lisboa, Portugal</p></div><a class="programme" href="https://veraoclassico.com/" target="_blank" rel="noreferrer">Web del festival</a></article>
           <article class="calendar-masterclass past-masterclass mc-past-teal"><time><b>28–31</b><span>JUL 2026</span></time><div><p class="event-kind">CLASE MAGISTRAL</p><h3><a href="https://veraoclassico.com/" target="_blank" rel="noreferrer">Verão Clássico</a></h3><p>Clases magistrales · Lisboa, Portugal</p></div><a class="programme" href="https://veraoclassico.com/" target="_blank" rel="noreferrer">Información del curso</a></article>
@@ -92,6 +95,8 @@
           <article class="calendar-project past-petrol"><time><b>29</b><span>OCT 2025</span></time><div><p class="event-kind">RECITAL</p><h3><a href="https://cultura.cordoba.es/festivaldepiano/programa/eldar-nebolsin" target="_blank" rel="noreferrer">Festival Rafael Orozco</a></h3><p>Palacio de la Merced · Córdoba, España</p></div><a class="programme" href="https://cultura.cordoba.es/festivaldepiano/programa/eldar-nebolsin" target="_blank" rel="noreferrer">Schumann · Prokofiev</a></article>
           <article class="calendar-project past-plum"><time><b>22</b><span>OCT 2025</span></time><div><p class="event-kind">RECITAL</p><h3><a href="https://www.march.es/es/madrid/concierto/schumann-poeta-novelista-iii-lieder-al-piano" target="_blank" rel="noreferrer">Fundación Juan March</a></h3><p>Lieder at the piano · Madrid, España</p></div><a class="programme" href="https://www.march.es/es/madrid/concierto/schumann-poeta-novelista-iii-lieder-al-piano" target="_blank" rel="noreferrer">Schumann · Liszt</a></article>
           <article class="calendar-project past-film"><time><b>2024</b></time><div><p class="event-kind">FILM</p><h3><a href="https://www.youtube.com/watch?v=nRMqeDeCf_4" target="_blank" rel="noreferrer">The Alchemy of the Piano</a></h3><p>Una película de Jan Schmidt-Garre · Eldar Nebolsin as Sergei Rachmaninoff</p></div><a class="programme" href="https://www.youtube.com/watch?v=nRMqeDeCf_4" target="_blank" rel="noreferrer">Ver el tráiler</a></article>
+        </div>
+        <button class="project-ribbon-next past-ribbon-next" type="button" aria-label="Mostrar más proyectos anteriores" data-ribbon-next="past-projects-list">›</button>
         </div>
       </div>
     </section>
@@ -125,7 +130,30 @@
       </div>
     </section>
 
-    <section id="teaching" class="section students" data-layer="06" data-title="Docencia">
+    <section id="repertoire" class="section repertoire" data-layer="06" data-title="Repertorio">
+      <details class="repertoire-details">
+        <summary><span>Repertorio</span><small>Obras para piano y orquesta</small></summary>
+        <div class="repertoire-grid">
+        <article><h3>Wolfgang Amadeus Mozart</h3><ul><li>Concierto para piano n.º 9 en mi bemol mayor, K. 271 «Jeunehomme»</li><li>N.º 12 en la mayor, K. 414</li><li>N.º 13 en do mayor, K. 415</li><li>N.º 19 en fa mayor, K. 459</li><li>N.º 21 en do mayor, K. 467</li><li>N.º 23 en la mayor, K. 488</li><li>N.º 24 en do menor, K. 491</li><li>N.º 25 en do mayor, K. 503</li><li>N.º 27 en si bemol mayor, K. 595</li></ul></article>
+        <article><h3>Ludwig van Beethoven</h3><ul><li>Concierto para piano n.º 1 en do mayor, op. 15</li><li>N.º 2 en si bemol mayor, op. 19</li><li>N.º 4 en sol mayor, op. 58</li><li>N.º 5 en mi bemol mayor, op. 73 «Emperador»</li><li>Fantasía coral en do menor, op. 80</li><li>Concierto para piano en re mayor, op. 61a — versión para piano del Concierto para violín realizada por el compositor</li></ul></article>
+        <article><h3>Frédéric Chopin</h3><ul><li>Concierto para piano n.º 1 en mi menor, op. 11</li><li>N.º 2 en fa menor, op. 21</li><li>Krakowiak, gran rondó de concierto en fa mayor, op. 14</li><li>Fantasía sobre aires polacos en la mayor, op. 13</li></ul></article>
+        <article><h3>Johannes Brahms</h3><ul><li>Concierto para piano n.º 1 en re menor, op. 15</li></ul></article>
+        <article><h3>Sergei Rachmaninoff</h3><ul><li>Concierto para piano n.º 1 en fa sostenido menor, op. 1</li><li>N.º 2 en do menor, op. 18</li><li>N.º 3 en re menor, op. 30</li><li>N.º 4 en sol menor, op. 40</li><li>Rapsodia sobre un tema de Paganini, op. 43</li></ul></article>
+        <article><h3>Maurice Ravel</h3><ul><li>Concierto para piano en sol mayor, M. 83</li><li>Concierto para la mano izquierda en re mayor, M. 82</li></ul></article>
+        <article><h3>Sergei Prokofiev</h3><ul><li>Concierto para piano n.º 2 en sol menor, op. 16</li></ul></article>
+        <article><h3>Piotr Ilich Chaikovski</h3><ul><li>Concierto para piano n.º 1 en si bemol menor, op. 23</li><li>N.º 2 en sol mayor, op. 44</li><li>Fantasía de concierto en sol mayor, op. 56</li></ul></article>
+        <article><h3>Franz Liszt</h3><ul><li>Concierto para piano n.º 1 en mi bemol mayor, S. 124</li><li>N.º 2 en la mayor, S. 125</li><li>Totentanz, S. 126</li></ul></article>
+        <article><h3>Anton Rubinstein</h3><ul><li>Concierto para piano n.º 4 en re menor, op. 70</li></ul></article>
+        <article><h3>Camille Saint-Saëns</h3><ul><li>Concierto para piano n.º 2 en sol menor, op. 22</li><li>N.º 5 en fa mayor, op. 103 «Egipcio»</li></ul></article>
+        <article><h3>Robert Schumann</h3><ul><li>Concierto para piano en la menor, op. 54</li></ul></article>
+        <article><h3>Edvard Grieg</h3><ul><li>Concierto para piano en la menor, op. 16</li></ul></article>
+          <article><h3>Fernando Lopes-Graça</h3><ul><li>Concierto para piano n.º 1</li><li>Concierto para piano n.º 2</li></ul></article>
+        </div>
+        <button class="repertoire-close" type="button" data-repertoire-close aria-label="Cerrar el repertorio">⌃</button>
+      </details>
+    </section>
+
+    <section id="teaching" class="section students" data-layer="07" data-title="Docencia">
       <div class="split">
         <div><p class="eyebrow">Professor & mentor</p><h2>Docencia</h2><p class="teaching-intro">Eldar Nebolsin es profesor de la Facultad de Piano de la <a href="https://campus.hfm-berlin.de/campus/all/lecturer.asp?backtounit=0x68BC952FF60D4C74BC125427A977EEA6&amp;gguid=0xADC393693B754330982B49ED0AC5CF35&amp;lang=en&amp;tguid=0xF5F9702426AA4A2D800D321826079F9C&amp;unitgguid=0x68BC952FF60D4C74BC125427A977EEA6" target="_blank" rel="noreferrer">Hochschule für Musik Hanns Eisler Berlin ↗</a>.</p><p class="note">Selección de alumnos y premiados en algunos de los principales concursos internacionales de piano del mundo.</p></div>
         <div class="student-list" id="student-list">
@@ -147,13 +175,14 @@
           <article><img src="student-mario-marzo.jpg" alt="Mario Marzo" loading="lazy"><div><h3><a href="https://www.musiespana.com/mario-marzo-bio-esp-musiespana-2023" target="_blank" rel="noreferrer">Mario Marzo</a></h3><p>Pianista de concierto y actor</p></div></article>
           <article><img src="student-lili-bogdanova.jpg" alt="Lili Bogdanova" loading="lazy"><div><h3><a href="https://www.triobronte.com/" target="_blank" rel="noreferrer">Lili Bogdanova · Trio Brontë</a></h3><p>Pianista de concierto · Trio Brontë</p></div></article>
           <article><img src="student-elena-moiseyenko.jpg" alt="Elena Moiseyenko" loading="lazy"><div><h3><a href="https://www.instagram.com/helenpiano?stkn=bHZjZWNiMGE2dDZq&amp;utm_source=qr" target="_blank" rel="noreferrer">Elena Moiseyenko</a></h3><p>Pianista de concierto y educadora</p></div></article>
+          <article><img src="student-alexandra-pavlova.jpg" alt="Alexandra Pavlova" loading="lazy"><div><h3><a href="https://www.interharmony.com/Session2/alexandra-pavlova" target="_blank" rel="noreferrer">Alexandra Pavlova</a></h3><p>Pianista de concierto y música de cámara</p></div></article>
           <article><img src="student-joachim-carr.jpg" alt="Joachim Carr" loading="lazy"><div><h3><a href="https://www.joachimcarr.com/" target="_blank" rel="noreferrer">Joachim Carr</a></h3><p>Pianista de concierto · Primer Premio, Concurso Internacional de Piano Edvard Grieg</p></div></article>
         </div>
         <button class="section-toggle teaching-toggle" type="button" data-toggle-section="teaching" data-more="Ver todos los alumnos" data-less="Mostrar menos alumnos" aria-expanded="false" aria-controls="student-list">Ver todos los alumnos</button>
       </div>
     </section>
 
-    <section id="media" class="section warm" data-layer="07" data-title="Multimedia">
+    <section id="media" class="section warm" data-layer="08" data-title="Multimedia">
       <div class="section-heading"><div><p class="eyebrow">Press & media</p><h2>Escuchar. Ver. Descargar.</h2></div></div>
       <div class="media-grid">
         <a class="youtube-video" href="https://www.youtube.com/watch?v=HuO7whwpaIk" target="_blank" rel="noreferrer"><span class="platform-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg><span>YouTube</span><em>LIVE</em></span><time class="media-date" datetime="2025-01-16">16–17 ENERO 2025</time><h3>Liszt · Piano Concerto No. 2</h3><p>ROSS · Sevilla · György Gyoriványi Ráth</p><b>Ver</b></a>
@@ -176,7 +205,7 @@
       <dialog class="photo-lightbox" id="photo-lightbox" aria-label="Visor de fotografías de prensa"><button class="photo-lightbox-close" type="button" aria-label="Cerrar fotografía">×</button><img src="" alt=""><a class="photo-lightbox-download" href="" download>Descargar fotografía en alta resolución</a></dialog>
     </section>
 
-    <section id="contact" class="contact section" data-layer="08" data-title="Contacto">
+    <section id="contact" class="contact section" data-layer="09" data-title="Contacto">
       <p class="eyebrow">Contacto</p><h2>Concerts, festivals,<br>masterclasses & press.</h2>
       <div class="contact-emails"><a class="email" href="mailto:nebolsineldar@hotmail.com">nebolsineldar@hotmail.com</a><a class="email" href="mailto:eldar.nebolsin@doz.hfm-berlin.de">eldar.nebolsin@doz.hfm-berlin.de</a></div>
     </section>

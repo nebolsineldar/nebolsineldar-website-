@@ -142,6 +142,36 @@ document.querySelectorAll('[data-calendar-toggle]').forEach((button) => {
   });
 });
 
+document.querySelectorAll('[data-ribbon-next]').forEach((button) => {
+  const ribbon = document.getElementById(button.dataset.ribbonNext);
+  if (!ribbon) return;
+  button.addEventListener('click', () => {
+    const card = ribbon.querySelector('article');
+    const step = card ? card.getBoundingClientRect().width + 14 : ribbon.clientWidth * 0.82;
+    const atEnd = ribbon.scrollLeft + ribbon.clientWidth >= ribbon.scrollWidth - 12;
+    ribbon.scrollTo({ left: atEnd ? 0 : ribbon.scrollLeft + step, behavior: 'smooth' });
+  });
+});
+
+document.querySelectorAll('[data-repertoire-close]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const details = button.closest('.repertoire-details');
+    if (!details) return;
+    details.open = false;
+    details.querySelector('summary')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+
+document.querySelectorAll('.bio-more').forEach((details) => {
+  const summary = details.querySelector('summary');
+  if (!summary) return;
+  const updateBiographyLabel = () => {
+    summary.setAttribute('aria-label', details.open ? summary.dataset.closeLabel : summary.dataset.openLabel);
+  };
+  details.addEventListener('toggle', updateBiographyLabel);
+  updateBiographyLabel();
+});
+
 const photoLightbox = document.getElementById('photo-lightbox');
 if (photoLightbox) {
   const lightboxImage = photoLightbox.querySelector('img');
