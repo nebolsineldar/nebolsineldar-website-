@@ -523,6 +523,12 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 .photo-lightbox-download:hover{background:#8b3d2b;color:#fff}
 .contact-emails{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:34px}
 .contact-emails .email{margin:0}
+.management-contact{width:min(620px,100%);margin:58px auto 0;padding:30px 34px 28px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025));text-align:left}
+.management-contact .contact-role{margin:0 0 17px;color:#aaa;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.management-contact h3{margin:0;font-family:var(--serif);font-size:clamp(34px,5vw,52px);font-weight:400;line-height:1}
+.management-agency{display:inline-block;margin-top:10px;border-bottom:1px solid rgba(255,255,255,.48);font-size:14px;letter-spacing:.06em}
+.management-details{display:flex;flex-wrap:wrap;gap:9px 24px;margin-top:24px;padding-top:21px;border-top:1px solid rgba(255,255,255,.16)}
+.management-details a{border-bottom:1px solid rgba(255,255,255,.28);color:#d8d8d4;font-size:13px;line-height:1.5}
 
 @media(max-width:900px){
   #media .media-grid{margin-right:-6vw;padding-right:6vw}
@@ -539,6 +545,8 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
   .photo-lightbox{width:96vw;height:90dvh;padding:54px 12px 16px}
   .photo-lightbox-download{width:100%;text-align:center}
   .contact-emails .email{font-size:clamp(17px,5vw,24px)}
+  .management-contact{margin-top:42px;padding:25px 22px;text-align:center}
+  .management-details{flex-direction:column;align-items:center;gap:8px}
 }
 
 /* Hero descriptor mirrors the restrained footer signature. */
@@ -791,6 +799,23 @@ footer{position:relative;z-index:20;background:#050505;border-top:1px solid rgba
 }
 @media(prefers-reduced-motion:reduce){
   .pedal-link,.pedal-link span,.pedal-link b,.pedal-language-control>img{transition:none}
+}
+
+/* Tablets share the portrait-led mobile composition, including iPad landscape. */
+@media (min-width:701px) and (max-width:1366px) {
+  .hero{min-height:calc(100svh - 66px)}
+  .hero h1{left:50%;right:auto;top:5%;bottom:auto;transform:translateX(-50%);width:76%;margin:0;text-align:center;font-size:clamp(82px,12vw,148px);line-height:.74}
+  .hero h1 span{margin-left:0}
+  .hero .intro,.hero .source,.hero-actions{display:none}
+  .hero-backdrop{object-position:50% 50%}
+  .pedal-language-control{top:calc(5% + clamp(61px,8.9vw,110px));right:-72px;width:185px;opacity:.97}
+  .pedal-link span{display:none}
+  .pedal-link b{font-size:13px}
+  .hero-featured-video{bottom:8%;width:min(560px,80vw);max-width:80vw;padding:16px 18px;gap:16px;font-size:14px;line-height:1.4}
+  .hero-featured-video>span:last-child{white-space:normal;gap:6px}
+  .hero-featured-video small{font-size:11px}
+  .hero-featured-video-icon{flex-basis:44px;width:44px;height:32px;font-size:15px}
+  .hero .eyebrow{bottom:3%;font-size:12px;max-width:92%;white-space:normal;text-align:center}
 }
 
 /* Biography introduction and compact disclosure. */
